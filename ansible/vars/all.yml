@@ -1,9 +1,37 @@
 ---
 server:
     install: '1'
-    packages: [git, vim, nodejs, htop]
+    packages: [git, vim, nodejs, htop, tk8.5, tcl8.5, build-essential]
     timezone: UTC
     locale: en_US.UTF-8
 vagrant_local:
     install: '1'
     vm: { base_box: xenial64, hostname: ansible, ip: 192.168.33.99, memory: '1024', sharedfolder: ./, useVagrantCloud: '1', syncType: '0' }
+nginx:
+    install: '1'
+    docroot: /vagrant
+    servername: myApp.vb
+mysql:
+    install: '1'
+    root_password: ''
+    database: db
+    user: user
+    password: password
+    dump: ''
+redis:
+    install: '1'
+    port: '6379'
+    deps:
+        - jemalloc
+        - hiredis
+        - lua
+        - geohash-int
+        - linenoise
+php:
+    install: '1'
+    ppa: php
+    packages: [php7.0-cli, php7.0-intl, php7.0-mcrypt, php7.0-mysql]
+xdebug:
+    install: '1'
+composer:
+    install: '1'

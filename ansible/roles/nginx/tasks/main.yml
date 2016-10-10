@@ -1,0 +1,13 @@
+---
+- name: Uninstall Apache2
+  become: yes
+  apt: name=apache2 state=absent
+
+- name: Install Nginx
+  sudo: yes
+  apt: pkg=nginx state=latest
+
+- name: Change default nginx site
+  sudo: yes
+  template: src=default.tpl dest=/etc/nginx/sites-available/default
+  notify: restart nginx
